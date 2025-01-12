@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="form-container">
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-input
+            labelPlacement="floating"
+            label="Nombre"
+            type="text"
+            placeholder="Nombre"
+            [(ngModel)]="user.nombre"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            labelPlacement="floating"
+            label="Email"
+            type="email"
+            placeholder="usuario@profesor.duoc.cl o usuario"
+            [(ngModel)]="user.email"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            labelPlacement="floating"
+            label="Fecha Nacimiento"
+            type="date"
+            placeholder="dd/mm/aaaa"
+            [(ngModel)]="user.f_nacimiento"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            labelPlacement="floating"
+            label="Genero"
+            type="text"
+            placeholder="Masculino o Femenino"
+            [(ngModel)]="user.genero"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            labelPlacement="floating"
+            label="Contraseña"
+            type="password"
+            value=""
+            [(ngModel)]="user.password"
+          ></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" color="primary" (click)="registrar()">Registrate</ion-button>
+      </ion-list>
+    </ion-card-content>
+  </div>
+</ion-content>
