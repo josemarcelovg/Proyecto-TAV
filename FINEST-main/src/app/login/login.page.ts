@@ -29,12 +29,11 @@ export class LoginPage {
   ) {}
 
   ngOnInit() {
-    // Recuperar los datos del registro desde localStorage
+   
     const savedEmail = localStorage.getItem('email');
     const savedPassword = localStorage.getItem('password');
 
     if (savedEmail && savedPassword) {
-      // Rellenar los campos automáticamente con los datos guardados
       this.credentials.email = savedEmail;
       this.credentials.password = savedPassword;
     }
@@ -61,12 +60,11 @@ export class LoginPage {
     this.usuarioService.LoginUsuario(this.credentials).subscribe(
       (res) => {
         console.log('Inicio de sesión exitoso:', res);
-        // Mostrar alerta con temporizador y redirigir a la página principal
         this.mostrarAlertaConTemporizador();
       },
       (err) => {
         console.error('Error al iniciar sesión:', err);
-        this.mostrarAlertaError(); // Mostrar una alerta en caso de error
+        this.mostrarAlertaError(); 
       }
     );
   }
@@ -76,11 +74,11 @@ export class LoginPage {
       this.credentials.email.trim() === '' || 
       this.credentials.password.trim() === ''
     ) {
-      // Mostrar un mensaje de error si falta algún dato en credentials
+      
       alert('Por favor, ingrese su correo electrónico y contraseña para continuar.');
-      return false; // Devuelve false si algún campo está vacío
+      return false; 
     }
-    return true; // Devuelve true si ambos campos están completos
+    return true; 
   }
   
   
@@ -99,7 +97,7 @@ export class LoginPage {
     
     setTimeout(() => {
       alert.dismiss();
-      this.router.navigate(['/home']); // Redirige al login
+      this.router.navigate(['/home']); 
     }, 3000);
   }
 

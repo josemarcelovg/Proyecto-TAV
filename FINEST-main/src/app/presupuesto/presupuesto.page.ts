@@ -12,4 +12,9 @@ export class PresupuestoPage implements OnInit {
   ngOnInit() {
   }
 
+  presupuesto:any={
+    nombre:'',
+    fecha_inicio:'',
+    fecha_corte:'',
+  }
 }

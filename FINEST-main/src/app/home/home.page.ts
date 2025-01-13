@@ -25,14 +25,16 @@ export class HomePage implements OnInit{
   ngOnInit() {
    
     const savedEmail = localStorage.getItem('email');
-    const savedPassword = localStorage.getItem('password');  // Recupera la contraseña guardada
+    const savedPassword = localStorage.getItem('password');  
     
     if (savedEmail) {
-      // Si existe el email, asignarlo a la propiedad userEmail para mostrarlo en la vista
       this.userEmail = savedEmail;
   }
 }
 
+presupuesto(){
+  this.router.navigate(['/presupuesto']); 
+}
 }
 
 

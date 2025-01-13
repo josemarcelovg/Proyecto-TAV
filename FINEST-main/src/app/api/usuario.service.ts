@@ -26,4 +26,5 @@ export class UsuarioService {
    LoginUsuario(credentials: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/usuario`, credentials, this.httpOptions);
 }
+
 }
