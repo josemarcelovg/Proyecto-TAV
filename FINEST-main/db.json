@@ -1,0 +1,55 @@
+{
+  "usuario": [
+    {
+      "id": "1",
+      "nombre": "albo",
+      "email": "prueba@duoc.cl",
+      "password": "colocolo1991",
+      "f_nacimiento": "2000-01-01",
+      "genero": "M"
+    },
+    {
+      "id": "fb99",
+      "nombre": "joseee",
+      "email": "jotaa@duoc.cl",
+      "password": "colocolo1",
+      "f_nacimiento": "2025-01-22",
+      "genero": "M"
+    },
+    {
+      "id": "3cc5",
+      "nombre": "josee",
+      "email": "josevg@duoc.cl",
+      "password": "colocolo1",
+      "f_nacimiento": "2025-01-23",
+      "genero": "M"
+    }
+  ],
+  "presupuesto": [
+    {
+      "id": 1,
+      "nombre": "cancha",
+      "fecha_inicio": "2025-01-12",
+      "fecha_corte": "2025-02-12",
+      "usuarioEmail": "usuario1@ejemplo.com",
+      "gastos": [
+        {
+          "id": 1,
+          "monto": 100,
+          "fecha": "2025-01-15",
+          "descripcion": "Alquiler cancha",
+          "tipo": "debito"
+        }
+      ]
+    },
+    {
+      "id": "73df",
+      "nombre": "aa",
+      "fecha_inicio": "2025-01-30",
+      "fecha_corte": "2025-01-22",
+      "categoria": "desconocida",
+      "usuarioEmail": "josevg@duoc.cl",
+      "gastos": []
+    }
+  ]
+}

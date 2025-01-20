@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Presupuestos Guardados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Presupuestos Guardados</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="presupuesto-container">
+    <ion-list>
+      <ion-item *ngFor="let presupuesto of presupuesto">
+        <ion-label>
+          <h2>{{ presupuesto.nombre }}</h2>
+          <p>Fecha de Inicio: {{ presupuesto.fecha_inicio }}</p>
+          <p>Fecha de Corte: {{ presupuesto.fecha_corte }}</p>
+          <p>Categoría: {{ presupuesto.categoria }}</p>
+
+          <div *ngIf="presupuesto.gastos?.length > 0">
+            <h4>Montos Guardados:</h4>
+            <ul>
+              <li *ngFor="let gasto of presupuesto.gastos">
+                <p>Monto: {{ gasto.monto }}</p>
+                <p>Fecha: {{ gasto.fecha | date:'shortDate' }}</p>
+                <p>Descripción: {{ gasto.descripcion }}</p>
+                <p>Tipo: {{ gasto.tipo === 'debito' ? 'Débito' : 'Crédito' }}</p>
+              </li>
+            </ul>
+          </div>
+          <p *ngIf="presupuesto.gastos?.length === 0">No hay montos registrados aún.</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

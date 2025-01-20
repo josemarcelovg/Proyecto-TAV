@@ -6,10 +6,12 @@
 
 <ion-content [fullscreen]="true">
   <div class="home">
-    <div *ngIf="userEmail">
-      <ion-label>Bienvenido  {{ userEmail }}</ion-label>
+    <div *ngIf="userNombre">
+      <ion-label>Bienvenido  {{ userNombre }}</ion-label>
     </div>
   </div>
+
+  
 
   <ion-button expand="block" color="primary" (click)="presupuesto()">Crear Presupuesto</ion-button>
   

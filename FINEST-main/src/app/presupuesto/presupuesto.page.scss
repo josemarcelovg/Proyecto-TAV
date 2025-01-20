@@ -1,7 +1,85 @@
 ion-content {
-    --background: linear-gradient(135deg, #00CCCC, #ff7eb3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  --background: linear-gradient(135deg, #00CCCC, #ff7eb3); /* Fondo con gradiente */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+  padding: 0;
+ 
+}
 
+.form-container {
+  width: 100%;
+  max-width: 500px; /* Establece el ancho máximo del contenedor */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Asegura que los elementos se alineen desde la parte superior */
+  margin-left: 400px; /* Eliminar márgenes que puedan empujar el contenedor hacia abajo */
+  height: auto; /* Asegura que el contenedor tenga suficiente altura */
+}
+
+ion-card {
+  width: 100%;
+  max-width: 500px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px; /* Añadido un margen en la parte inferior */
+  padding: 20px;
+}
+
+
+
+
+
+ion-button:disabled {
+  background-color: #d3d3d3;
+  color: #aaa;
+  box-shadow: none;
+}
+
+ion-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #555555;
+  margin-bottom: 5px;
+}
+
+ion-input {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  font-size: 16px;
+  background: #ffffff;
+  color: #333333;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+ion-input::part(native) {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+ion-input:focus-within {
+  border-color: #00cccc;
+  box-shadow: 0 0 5px rgba(0, 204, 204, 0.5); /* Sombra cuando el campo esté en foco */
+}
+
+ion-select {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+ion-select:focus-within {
+  border-color: #00cccc;
+  box-shadow: 0 0 5px rgba(0, 204, 204, 0.5); /* Sombra cuando el select esté en foco */
+}

@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'presupuesto',
     loadChildren: () => import('./presupuesto/presupuesto.module').then( m => m.PresupuestoPageModule)
   },
+  {
+    path: 'presupuesto-save',
+    loadChildren: () => import('./presupuesto-save/presupuesto-save.module').then( m => m.PresupuestoSavePageModule)
+  },
 ];
 
 @NgModule({

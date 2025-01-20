@@ -1,10 +1,62 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Presupuesto</ion-title>
+    <ion-title>Crear Presupuesto</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
+  <div class="form-container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Datos del Presupuesto</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label >Nombre</ion-label>
+          <ion-input [(ngModel)]="presupuesto.nombre" name="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label >Fecha Inicio</ion-label>
+          <ion-input [(ngModel)]="presupuesto.fecha_inicio" name="fecha_inicio" type="date"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label >Fecha Corte</ion-label>
+          <ion-input [(ngModel)]="presupuesto.fecha_corte" name="fecha_corte" type="date"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label >Categoría</ion-label>
+          <ion-input [(ngModel)]="presupuesto.categoria" name="categoria"></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
 
-  
- </ion-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Agregar Gastos</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label >Monto</ion-label>
+          <ion-input [(ngModel)]="nuevoGasto.monto" name="monto" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label >Fecha</ion-label>
+          <ion-input [(ngModel)]="nuevoGasto.fecha" name="fecha" type="date"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label >Descripción</ion-label>
+          <ion-input [(ngModel)]="nuevoGasto.descripcion" name="descripcion"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Tipo</ion-label>
+          <ion-select [(ngModel)]="nuevoGasto.tipo" name="tipo">
+            <ion-select-option value="debito">Débito</ion-select-option>
+            <ion-select-option value="credito">Crédito</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="full" (click)="crearPresupuesto()">Crear Presupuesto</ion-button>
+  </div>
+</ion-content>

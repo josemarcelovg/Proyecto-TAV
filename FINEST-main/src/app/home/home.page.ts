@@ -5,16 +5,17 @@ import { Router } from '@angular/router';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  standalone: false,
+ 
 })
 export class HomePage implements OnInit{
 
   credentials = {
     email: '',
-    password: ''
+    password: '',
+    nombre: ''
   };
 
-  userEmail: string | null = '';  
+  userNombre: string | null = '';  
   
 
   constructor(
@@ -23,12 +24,12 @@ export class HomePage implements OnInit{
   ) {}
 
   ngOnInit() {
-   
     const savedEmail = localStorage.getItem('email');
     const savedPassword = localStorage.getItem('password');  
+    const savedNombre = localStorage.getItem('nombre');
     
-    if (savedEmail) {
-      this.userEmail = savedEmail;
+    if (savedNombre) {
+      this.userNombre = savedNombre;
   }
 }
 
