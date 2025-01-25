@@ -20,14 +20,16 @@ export class PresupuestoPage implements OnInit {
   };
 
   mostrarFormularioGasto: boolean = false;
-  nuevoGasto = {
+  gasto: any ={
     monto: '',
     fecha: '',
     descripcion: '',
     tipo: ''  
   }
 
-  gastos: any[] = [];
+  gastos: any =[]
+  
+  
 
   constructor(private http: HttpClient, private router: Router, private usuarioService: UsuarioService,
     public toastController: ToastController) { }
@@ -44,11 +46,10 @@ export class PresupuestoPage implements OnInit {
       const email = localStorage.getItem('email');
       if (email) {
         const gastoConEmail = {
-          ...this.nuevoGasto,
+          ...this.gastos,
           usuarioEmail: email
         };
         this.gastos.push(gastoConEmail);
-        this.presupuesto.gastos.push(gastoConEmail);
         this.presentToast('Gasto agregado correctamente.');
       } else {
         this.presentToast('No se pudo obtener el email del usuario.');
@@ -65,13 +66,14 @@ export class PresupuestoPage implements OnInit {
       return;
     }
   
+    this.gastos[0]=this.gasto
     this.presupuesto.gastos = this.gastos; 
   
     this.usuarioService.RegistrarPresupuesto(this.presupuesto).subscribe(
       (res) => {
         console.log('Presupuesto y gastos guardados exitosamente:', res);
         this.presentToast('Presupuesto y gastos guardados correctamente.');
-        this.router.navigate(['/presupuesto-save']);
+        this.router.navigate(['/home']);
       },
       (err) => {
         console.error('Error al guardar el presupuesto:', err);
@@ -91,15 +93,15 @@ export class PresupuestoPage implements OnInit {
 
   validarGasto(): boolean {
     return (
-      this.nuevoGasto.monto.trim() !== '' &&
-      this.nuevoGasto.fecha.trim() !== '' &&
-      this.nuevoGasto.descripcion.trim() !== '' &&
-      this.nuevoGasto.tipo.trim() !== ''
+      this.gastos.monto.trim() !== '' &&
+      this.gastos.fecha.trim() !== '' &&
+      this.gastos.descripcion.trim() !== '' &&
+      this.gastos.tipo.trim() !== ''
     );
   }
 
   limpiarCampos() {
-    this.nuevoGasto = {
+    this.gastos = {
       monto: '',
       fecha: '',
       descripcion: '',

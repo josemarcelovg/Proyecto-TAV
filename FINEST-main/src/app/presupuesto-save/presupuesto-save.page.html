@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Presupuestos Guardados</ion-title>
+    <ion-title>FININOVA</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,21 +13,55 @@
 
   <div class="presupuesto-container">
     <ion-list>
-      <ion-item *ngFor="let presupuesto of presupuesto">
+
+      <div>
+        <input type="text" [(ngModel)]="filtroDescripcion" (input)="filtrarGastos()" placeholder="Filtrar por descripción">
+        <input type="text" [(ngModel)]="filtroCategoria" (input)="filtrarGastos()" placeholder="Filtrar por categoría">
+      </div>
+      
+      <div *ngIf="presupuestos.length==0">
+       <h4>No hay presupuestos asociados.</h4>
+      </div>
+
+     
+      
+      <div *ngIf="gastosFiltrados.length === 0">
+        <p>No se encontraron gastos que coincidan con los filtros.</p>
+      </div>
+      <div *ngIf="gastosFiltrados.length > 0">
+        <h4>Gastos filtrados:</h4>
+        <button (click)="limpiarFiltro()">Limpiar Filtros</button>
+        <ul>
+          <li *ngFor="let gasto of gastosFiltrados">
+            <p>Monto: {{ gasto.monto }}</p>
+            <p>Fecha: {{ gasto.fecha | date: 'shortDate' }}</p>
+            <p>Descripción: {{ gasto.descripcion }}</p>
+            <p>Tipo: {{ gasto.tipo === 'debito' ? 'Débito' : 'Crédito' }}</p>
+          </li>
+        </ul>
+      </div>
+      
+      <h3>Montos por Categoría</h3>
+      <canvas id="graficoCategorias"></canvas>
+
+      <ion-item *ngFor="let presupuesto of presupuestos">
         <ion-label>
           <h2>{{ presupuesto.nombre }}</h2>
           <p>Fecha de Inicio: {{ presupuesto.fecha_inicio }}</p>
           <p>Fecha de Corte: {{ presupuesto.fecha_corte }}</p>
           <p>Categoría: {{ presupuesto.categoria }}</p>
 
+          
+          
           <div *ngIf="presupuesto.gastos?.length > 0">
-            <h4>Montos Guardados:</h4>
+
+            <h4>Gastos :</h4>
             <ul>
-              <li *ngFor="let gasto of presupuesto.gastos">
-                <p>Monto: {{ gasto.monto }}</p>
-                <p>Fecha: {{ gasto.fecha | date:'shortDate' }}</p>
-                <p>Descripción: {{ gasto.descripcion }}</p>
-                <p>Tipo: {{ gasto.tipo === 'debito' ? 'Débito' : 'Crédito' }}</p>
+              <li *ngFor="let gastos of presupuesto.gastos">
+                <p>Monto: {{ gastos.monto }}</p>
+                <p>Fecha: {{ gastos.fecha | date:'shortDate' }}</p>
+                <p>Descripción: {{ gastos.descripcion }}</p>
+                <p>Tipo: {{ gastos.tipo === 'debito' ? 'Débito' : 'Crédito' }}</p>
               </li>
             </ul>
           </div>
@@ -35,5 +69,7 @@
         </ion-label>
       </ion-item>
     </ion-list>
+
+    <button (click)="Home()">Volver a inicio</button>
   </div>
 </ion-content>

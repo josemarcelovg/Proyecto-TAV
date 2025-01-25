@@ -24,24 +24,7 @@ export class UsuarioService {
     return this.http.post(`${this.apiUrl}/usuario`, user, this.httpOptions);
   }
 
-  LoginUsuario(credentials: any): Observable<any> {
-    const { email, password } = credentials;
   
-    return this.http.get<any[]>(`${this.apiUrl}/usuario`, this.httpOptions).pipe(
-      map((users) => {
-        const user = users.find((u) => u.email === email && u.password === password);
-  
-        if (user) {
-          return { success: true, user };
-        } else {
-          throw new Error('Email o contraseña incorrectos');
-        }
-      }),
-      catchError((error) => {
-        return of({ success: false, message: error.message });
-      })
-    );
-  }
 
   RegistrarPresupuesto(presupuesto: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/presupuesto`, presupuesto, this.httpOptions);
@@ -53,42 +36,12 @@ export class UsuarioService {
     );
   }
 
-  registrarGasto(presupuestoId: string, gasto: any): Observable<any> {
-    const email = localStorage.getItem('email');
-  
-    if (!email) {
-      return of({ success: false, message: 'No se encontró el email del usuario.' });
-    }
-  
-    const gastoConEmail = {
-      ...gasto,
-      usuarioEmail: email
-    };
-  
-    return this.http.get<any[]>(`${this.apiUrl}/presupuesto/${presupuestoId}`).pipe(
-      map((presupuestos) => {
-        const presupuesto = presupuestos.find((p) => p.id === presupuestoId);
-  
-        if (presupuesto) {
-          presupuesto.gastos = presupuesto.gastos || [];
-          presupuesto.gastos.push(gastoConEmail);
-  
-          return this.http.put(`${this.apiUrl}/presupuesto/${presupuestoId}`, presupuesto, this.httpOptions).pipe(
-            map((updatedPresupuesto) => updatedPresupuesto)
-          );
-        } else {
-          throw new Error('Presupuesto no encontrado');
-        }
-      }),
-      catchError((error: HttpErrorResponse) => {
-        console.error('Error al registrar el gasto:', error);
-        return of({ success: false, message: error.message });
-      })
-    );
+  RegistrarGasto(presupuesto: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/gastos`, presupuesto, this.httpOptions);
   }
-
+  
   obtenerPresupuestosPorEmail(email: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/presupuesto?email=${email}`, this.httpOptions).pipe(
+    return this.http.get<any[]>(`${this.apiUrl}/presupuesto?usuarioEmail=${email}`, this.httpOptions).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error('Error al obtener los presupuestos:', error);
         return of([]);

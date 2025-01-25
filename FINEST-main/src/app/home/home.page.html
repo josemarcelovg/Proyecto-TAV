@@ -11,8 +11,9 @@
     </div>
   </div>
 
-  
-
-  <ion-button expand="block" color="primary" (click)="presupuesto()">Crear Presupuesto</ion-button>
-  
+  <ion-button expand="block" color="primary" (click)="crearcuenta()">Crear Cuenta</ion-button>
+  <ion-button expand="block" color="primary" (click)="iniciosesion()">Iniciar Sesion</ion-button>
+  <ion-button expand="block" color="primary" routerLink="/presupuesto" (click)="presupuesto()">Crear Presupuesto</ion-button>
+  <ion-button expand="block" color="primary" routerLink="/presupuesto-save" (click)="verpresupuesto()">Ver Presupuestos</ion-button>
+  <ion-button expand="block" color="primary" (click)="logout()">Cerrar Sesión</ion-button>
 </ion-content>

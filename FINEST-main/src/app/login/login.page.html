@@ -14,7 +14,7 @@
               label="Email"
               type="email"
               placeholder="usuario@profesor.duoc.cl o usuario"
-              [(ngModel)]="credentials.email"
+              [(ngModel)]="user.email"
             ></ion-input>
           </ion-item>
           <ion-item>
@@ -23,12 +23,13 @@
               label="Contraseña"
               type="password"
               placeholder="Contraseña"
-              [(ngModel)]="credentials.password"
+              [(ngModel)]="user.password"
             ></ion-input>
           </ion-item>
         </ion-list>
       </ion-card-content>
 
-      <ion-button expand="block" color="primary" (click)="login()">Iniciar sesión</ion-button>
+      <ion-button expand="block" color="primary"  (click)="login()">Iniciar sesión</ion-button>
+      <ion-button expand="block" color="primary"  (click)="registro()">No tienes cuenta?Registrate</ion-button>
     </div>
 </ion-content>

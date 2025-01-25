@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../api/usuario.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';  // Importa el servicio AuthServicew
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -15,17 +16,17 @@ export class HomePage implements OnInit{
     nombre: ''
   };
 
-  userNombre: string | null = '';  
+  userNombre: string  = '';  
   
 
   constructor(
     private usuarioService: UsuarioService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
-    const savedEmail = localStorage.getItem('email');
-    const savedPassword = localStorage.getItem('password');  
+     
     const savedNombre = localStorage.getItem('nombre');
     
     if (savedNombre) {
@@ -33,8 +34,27 @@ export class HomePage implements OnInit{
   }
 }
 
+
+
 presupuesto(){
   this.router.navigate(['/presupuesto']); 
+}
+
+logout() {
+  this.authService.logout(); 
+  this.router.navigate(['/login']); 
+}
+
+verpresupuesto(){
+  this.router.navigate(['/presupuesto-save'])
+}
+
+iniciosesion(){
+  this.router.navigate(['/login'])
+}
+
+crearcuenta(){
+  this.router.navigate(['/registro'])
 }
 }
 

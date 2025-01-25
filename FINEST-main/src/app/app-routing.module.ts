@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -8,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'registro',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -21,12 +22,11 @@ const routes: Routes = [
   },
   {
     path: 'presupuesto',
-    loadChildren: () => import('./presupuesto/presupuesto.module').then( m => m.PresupuestoPageModule)
-  },
+     loadChildren: () => import('./presupuesto/presupuesto.module').then(m => m.PresupuestoPageModule), canActivate: [authGuard] },
   {
     path: 'presupuesto-save',
-    loadChildren: () => import('./presupuesto-save/presupuesto-save.module').then( m => m.PresupuestoSavePageModule)
-  },
+    loadChildren: () => import('./presupuesto-save/presupuesto-save.module').then(m => m.PresupuestoSavePageModule), canActivate: [authGuard] },
+  
 ];
 
 @NgModule({
