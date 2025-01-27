@@ -1,81 +1,180 @@
 ion-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 16px; /* Ajusta el padding para un mejor espaciado */
-    --background: linear-gradient(135deg, #00CCCC, #ff7eb3);
-  }
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px;
+  --background: linear-gradient(135deg, #00cccc, #ff7eb3);
+}
+
+.presupuesto-container {
   
-  .presupuesto-container {
-    width: 100%;
-    max-width: 600px; /* Limita el ancho del contenedor */
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    
-  }
-  
-  ion-list {
-    margin-bottom: 20px; /* Espacio entre la lista de presupuestos y el botón */
-  }
-  
-  ion-item {
-    margin-bottom: 15px; /* Espacio entre los elementos de la lista */
-  }
-  
-  ion-button {
-    width: 100%;
-    padding: 10px 0; /* Ajusta el tamaño del botón */
-    font-size: 14px; /* Disminuye el tamaño de la fuente */
-    border-radius: 8px;
-    background-color: #3880ff;
-    color: white;
-  }
-  
-  ion-button:disabled {
-    background-color: #d3d3d3;
-    color: #aaa;
-  }
-  
-  ion-card {
-    margin-top: 20px; /* Espacio entre el botón y el formulario */
-  }
-  
-  ion-card-header {
-    text-align: center;
-  }
-  
-  ion-card-title {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  ion-label {
-    font-size: 14px; /* Disminuye el tamaño de la fuente del label */
-  }
-  
-  ion-input,
-  ion-select {
-    font-size: 14px; /* Ajusta el tamaño de la fuente de los inputs y select */
-    padding: 10px;
-  }
-  
-  ion-item {
-    margin-bottom: 15px; /* Ajusta el espacio entre los inputs */
-  }
-  
-  ion-select {
-    font-size: 14px; /* Ajusta el tamaño de la fuente del select */
-  }
-  
-  #graficoCategorias {
-     width: 20px;
-    height: 500px !important; 
-  }
+  max-width: 700px; /* Limita el ancho del contenedor */
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Estilos para los filtros */
+input[type="text"] {
+  padding: 12px 15px;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #00cccc;
+}
+
+button {
+  padding: 12px 18px;
+  background-color: #3880ff;
+  color: white;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #3171e0;
+}
+
+button:disabled {
+  background-color: #d3d3d3;
+  color: #aaa;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* Estilos de los gastos filtrados */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #f9f9f9;
+  margin-bottom: 12px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+li p {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Detalles organizados de los gastos con fondo negro claro */
+
+
+li .gasto-detalle span {
+  font-weight: bold;
+  color: #00CCCC;  /* Color para el título */
+}
+
+
+
+ul li .gasto-imagen img {
+  width: 100px !important; 
+  height: 100px !important; 
+  object-fit: cover;
+}
+
+
+
+ion-item {
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #00CCCC;
+  cursor: pointer;
+}
+
+ion-item:hover {
+  background-color: #3880ff;
+}
+
+ion-label {
+  font-size: 14px;
+  color: #333;
+}
+
+ion-button {
+  width: 60%;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  background-color: #3880ff;
+  color: white;
+  margin-top: 15px;
+}
+
+ion-button:hover {
+  background-color: #3171e0;
+}
+
+#graficoCategorias {
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+/* Estilo para el card de los presupuestos */
+ion-card {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+ion-card-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+ion-card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+ion-input, ion-select {
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+ion-select {
+  font-size: 14px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+p{
+  text-align: center;
+}

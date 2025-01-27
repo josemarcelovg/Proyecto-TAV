@@ -10,70 +10,39 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./presupuesto.page.scss'],
 })
 export class PresupuestoPage implements OnInit {
-
   presupuesto: any = {
     nombre: '',
     fecha_inicio: '',
     fecha_corte: '',
     categoria: '',
-    usuarioEmail: '',
+    usuarioId: '',  // Ahora utilizamos usuarioId en lugar de usuarioEmail
   };
 
-  mostrarFormularioGasto: boolean = false;
-  gasto: any ={
-    monto: '',
-    fecha: '',
-    descripcion: '',
-    tipo: ''  
-  }
-
-  gastos: any =[]
-  
-  
-
-  constructor(private http: HttpClient, private router: Router, private usuarioService: UsuarioService,
-    public toastController: ToastController) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private usuarioService: UsuarioService,
+    public toastController: ToastController
+  ) {}
 
   ngOnInit() {
-    const email = localStorage.getItem('email');
-    if (email) {
-      this.presupuesto.usuarioEmail = email; 
+    const userId = localStorage.getItem('id');  // Recuperamos el ID del usuario desde localStorage
+    if (userId) {
+      this.presupuesto.usuarioId = userId;  // Asignamos el ID al presupuesto
     }
   }
-
-  agregarGasto() {
-    if (this.validarGasto()) {
-      const email = localStorage.getItem('email');
-      if (email) {
-        const gastoConEmail = {
-          ...this.gastos,
-          usuarioEmail: email
-        };
-        this.gastos.push(gastoConEmail);
-        this.presentToast('Gasto agregado correctamente.');
-      } else {
-        this.presentToast('No se pudo obtener el email del usuario.');
-      }
-    } else {
-      this.presentToast('Por favor complete todos los datos del gasto.');
-    }
-  }
-  
 
   crearPresupuesto() {
     if (!this.validarDatosPresupuesto()) {
       this.presentToast('Por favor complete todos los datos del presupuesto.');
       return;
     }
-  
-    this.gastos[0]=this.gasto
-    this.presupuesto.gastos = this.gastos; 
-  
-    this.usuarioService.RegistrarPresupuesto(this.presupuesto).subscribe(
+
+    this.usuarioService.registrarPresupuesto(this.presupuesto).subscribe(
       (res) => {
-        console.log('Presupuesto y gastos guardados exitosamente:', res);
-        this.presentToast('Presupuesto y gastos guardados correctamente.');
-        this.router.navigate(['/home']);
+        console.log('Presupuesto guardado exitosamente:', res);
+        this.presentToast('Presupuesto guardado correctamente.');
+        this.router.navigate(['home'], { state: { presupuestoId: res.id } });  // Navegar a la página de gastos con el ID del presupuesto
       },
       (err) => {
         console.error('Error al guardar el presupuesto:', err);
@@ -81,32 +50,14 @@ export class PresupuestoPage implements OnInit {
       }
     );
   }
-  
+
   validarDatosPresupuesto(): boolean {
     return (
       this.presupuesto.nombre.trim() !== '' &&
       this.presupuesto.fecha_inicio.trim() !== '' &&
       this.presupuesto.fecha_corte.trim() !== '' &&
-      this.presupuesto.categoria.trim() !== ''
+      this.presupuesto.categoria.trim() !== '' 
     );
-  }
-
-  validarGasto(): boolean {
-    return (
-      this.gastos.monto.trim() !== '' &&
-      this.gastos.fecha.trim() !== '' &&
-      this.gastos.descripcion.trim() !== '' &&
-      this.gastos.tipo.trim() !== ''
-    );
-  }
-
-  limpiarCampos() {
-    this.gastos = {
-      monto: '',
-      fecha: '',
-      descripcion: '',
-      tipo: '',
-    };
   }
 
   async presentToast(message: string, duration?: number) {

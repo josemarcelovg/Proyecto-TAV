@@ -1,80 +1,60 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/usuario';  // Ruta a tu archivo db.json
+  private apiUrl = 'http://localhost:3000/usuario';
 
-  constructor(private http: HttpClient, private router: Router,  public toastController: ToastController) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    public toastController: ToastController
+  ) {}
 
-  isLoggedIn(): boolean {
-    const user = localStorage.getItem('user');
-    return !!user;
-  }
-
-
-  async login(email: string, password: string): Promise<any[]> {
-    try {
-      
-      const usuarios = await this.http.get<any[]>(this.apiUrl).toPromise();
-      
-      if (!Array.isArray(usuarios)) {
-        console.error('La respuesta no es un arreglo válido');
-        return [];  
-      }
-  
-      return usuarios; 
-    } catch (error) {
-      console.error('Error al obtener usuarios:', error);
-      throw new Error('Error al autenticar usuario');
-    }
-  }
-  
   async authenticateUser(email: string, password: string): Promise<boolean> {
     try {
-      const usuarios = await this.login(email, password);
-  
-      
-      if (!Array.isArray(usuarios)) {
-        console.error('Los usuarios no son un arreglo válido');
-        return false;
-      }
-  
-     
-      const usuario = usuarios.find((user: any) => user.email === email && user.password === password);
-  
-      if (usuario) {
-        localStorage.setItem('user', JSON.stringify(usuario)); 
+      const response: any = await lastValueFrom(
+        this.http.post(this.apiUrl, { email, password })
+      );
+
+      if (response.success && response.user) {
+        localStorage.setItem('user', JSON.stringify(response.user));
+        localStorage.setItem('id', response.user.id);
+        localStorage.setItem('email', response.user.email);
+        localStorage.setItem('nombre', response.user.nombre);
         return true;
       } else {
-        console.error('No se encontró el usuario con las credenciales proporcionadas');
-        return false; 
+        console.error('Credenciales incorrectas');
+        return false;
       }
-  
     } catch (error) {
       console.error('Error durante la autenticación:', error);
-      return false; 
+      return false;
     }
   }
 
   logout() {
     localStorage.removeItem('user');
-    localStorage.removeItem('email'); 
-    localStorage.removeItem('password'); 
-    
-    this.router.navigate(['/login']);
-    if (!localStorage.getItem('user') && !localStorage.getItem('email') && !localStorage.getItem('password')) {
+    localStorage.removeItem('email');
+    localStorage.removeItem('password');
+    localStorage.removeItem('id');
+
+    if (
+      !localStorage.getItem('user') &&
+      !localStorage.getItem('email') &&
+      !localStorage.getItem('password') &&
+      !localStorage.getItem('id')
+    ) {
       console.log('Todos los datos han sido borrados correctamente.');
-      this.presentToast('Se ha cerrado sesion con exito.');
+      this.presentToast('Se ha cerrado sesión con éxito.');
     } else {
       console.log('Algunos datos no se borraron.');
     }
-  
   }
 
   async presentToast(message: string, duration?: number) {

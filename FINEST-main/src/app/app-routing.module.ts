@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'presupuesto-save',
     loadChildren: () => import('./presupuesto-save/presupuesto-save.module').then(m => m.PresupuestoSavePageModule), canActivate: [authGuard] },
+  {
+    path: 'gastos',
+    loadChildren: () => import('./gastos/gastos.module').then( m => m.GastosPageModule)
+  },
   
 ];
 

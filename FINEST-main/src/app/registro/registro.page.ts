@@ -26,36 +26,34 @@ export class RegistroPage implements OnInit {
   ngOnInit() {}
 
   registrar() {
-   
     if (!this.validarCampos()) {
-    this.presentToast('Por favor, complete todos los campos antes de registrar.');
+      this.presentToast('Por favor, complete todos los campos antes de registrar.');
       return;
     }
 
-   
     this.validarCorreo().then((existe) => {
       if (existe) {
         this.presentToast('El correo electrónico ya está registrado.');
       } else {
-        
-        this.usuarioService.RegistrarUsuario(this.user).subscribe(
+        this.usuarioService.registrarUsuario(this.user).subscribe(
           (res) => {
             console.log('Registro exitoso:', res);
 
-            
+            // Aquí guardamos el ID y otros datos del usuario en localStorage
+            if (res && res.id) {
+              localStorage.setItem('id', res.id);  // Guardamos el ID de la respuesta
+            }
             localStorage.setItem('nombre', this.user.nombre);
             localStorage.setItem('email', this.user.email);
             localStorage.setItem('password', this.user.password);
 
-           
             this.limpiarCampos();
 
-           
             this.router.navigate(['/login']);
           },
           (err) => {
             console.error('Error al registrar el usuario:', err);
-            
+            this.presentToast('Error al registrar el usuario.');
           }
         );
       }
@@ -76,7 +74,7 @@ export class RegistroPage implements OnInit {
       );
     });
   }
-  
+
   limpiarCampos() {
     this.user = {
       nombre: '',
@@ -97,13 +95,11 @@ export class RegistroPage implements OnInit {
     );
   }
 
-  async presentToast(message:string, duration?:number){
-    const toast = await this.toastController.create(
-      {
-        message:message,
-        duration:duration?duration:2000
-      }
-    );
+  async presentToast(message: string, duration?: number) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: duration ? duration : 2000,
+    });
     toast.present();
   }
 }

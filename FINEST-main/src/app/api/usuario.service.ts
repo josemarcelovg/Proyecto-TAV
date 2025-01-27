@@ -1,8 +1,7 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
-import { of } from 'rxjs'; 
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,39 +12,78 @@ export class UsuarioService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*' 
+      'Content-Type': 'application/json'
     })
   };
 
-  constructor(private http: HttpClient) { }
-
-  RegistrarUsuario(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/usuario`, user, this.httpOptions);
-  }
+  constructor(private http: HttpClient) {}
 
   
-
-  RegistrarPresupuesto(presupuesto: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/presupuesto`, presupuesto, this.httpOptions);
+  registrarUsuario(user: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/usuario`, user, this.httpOptions).pipe(
+      catchError(this.handleError('RegistrarUsuario'))
+    );
   }
 
+  // En el archivo UsuarioService
+
+verificarCredenciales(email: string, password: string): Observable<any> {
+  return this.http.get<any[]>(`${this.apiUrl}/usuario?email=${email}&password=${password}`).pipe(
+    map((usuarios) => usuarios.length > 0 ? usuarios[0] : null),
+    catchError(this.handleError('VerificarCredenciales', null))
+  );
+}
+
+
+  
   verificarCorreo(email: string): Observable<boolean> {
     return this.http.get<any[]>(`${this.apiUrl}/usuario?email=${email}`).pipe(
-      map((usuarios) => usuarios.length > 0)
+      map((usuarios) => usuarios.length > 0),
+      catchError(this.handleError('VerificarCorreo', false))
     );
   }
 
-  RegistrarGasto(presupuesto: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/gastos`, presupuesto, this.httpOptions);
-  }
   
-  obtenerPresupuestosPorEmail(email: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/presupuesto?usuarioEmail=${email}`, this.httpOptions).pipe(
-      catchError((error: HttpErrorResponse) => {
-        console.error('Error al obtener los presupuestos:', error);
-        return of([]);
-      })
+  agregarGasto(gasto: any): Observable<any> {
+    const url = `${this.apiUrl}/gastos`;
+    return this.http.post(url, gasto, this.httpOptions).pipe(
+      catchError(this.handleError('AgregarGasto'))
     );
+  }
+
+  
+  obtenerGastosPorUsuarioId(usuarioId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/gastos?usuarioId=${usuarioId}`).pipe(
+      catchError(this.handleError('ObtenerGastosPorUsuarioId', []))
+    );
+  }
+
+  
+  obtenerGastoPorId(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/gastos/${id}`).pipe(
+      catchError(this.handleError('ObtenerGastoPorId', null))
+    );
+  }
+
+  
+  obtenerPresupuestosPorUsuarioId(usuarioId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/presupuesto?usuarioId=${usuarioId}`).pipe(
+      catchError(this.handleError('ObtenerPresupuestosPorUsuarioId', []))
+    );
+  }
+
+  
+  registrarPresupuesto(presupuesto: any): Observable<any> {
+    const url = `${this.apiUrl}/presupuesto`;
+    return this.http.post(url, presupuesto, this.httpOptions).pipe(
+      catchError(this.handleError('RegistrarPresupuesto'))
+    );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
   }
 }

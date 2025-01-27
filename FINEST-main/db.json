@@ -9,139 +9,16 @@
       "genero": "M"
     },
     {
-      "id": "fb99",
-      "nombre": "joseee",
-      "email": "jotaa@duoc.cl",
-      "password": "colocolo1",
-      "f_nacimiento": "2025-01-22",
-      "genero": "M"
-    },
-    {
-      "id": "3cc5",
-      "nombre": "josee",
-      "email": "josevg@duoc.cl",
-      "password": "colocolo1",
-      "f_nacimiento": "2025-01-23",
-      "genero": "M"
-    },
-    {
-      "id": "cd7a",
-      "nombre": "jotaa",
-      "email": "jotaaa@duoc.cl",
-      "password": "colocolo",
-      "f_nacimiento": "2025-01-14",
-      "genero": "M"
-    },
-    {
-      "id": "46a8",
-      "nombre": "jotaa",
-      "email": "joseevg@duoc.cl",
-      "password": "colocolo1",
-      "f_nacimiento": "2025-01-15",
-      "genero": "M"
-    },
-    {
-      "id": "3a64",
-      "nombre": "jo",
-      "email": "jose@mvgg290@duoc.cl",
-      "password": "colocolo1",
-      "f_nacimiento": "2025-01-22",
-      "genero": "M"
-    },
-    {
-      "id": "a809",
-      "nombre": "alo",
+      "id": "8a67",
       "email": "alo@duoc.cl",
-      "password": "colocolo",
-      "f_nacimiento": "2025-01-23",
-      "genero": "M"
+      "password": "jj"
     },
     {
-      "id": "c1eb",
-      "nombre": "alooooo",
-      "email": "alo1@duoc.cl",
-      "password": "colocolo",
+      "id": "163d",
+      "nombre": "duoc",
+      "email": "jota@duoc.cl",
+      "password": "jj",
       "f_nacimiento": "2025-01-30",
-      "genero": "Masculino"
-    },
-    {
-      "id": "e0fe",
-      "nombre": "jose",
-      "email": "josemvg@duoc.cl",
-      "password": "jjss23",
-      "f_nacimiento": "2025-01-28",
-      "genero": "Masculino"
-    },
-    {
-      "id": "fbdb",
-      "nombre": "colocolo",
-      "email": "albocampeon@gmail.com",
-      "password": "colocolo",
-      "f_nacimiento": "2025-01-31",
-      "genero": "Masculino"
-    },
-    {
-      "id": "bcf4",
-      "nombre": "ad",
-      "email": "asd@duoc.cl",
-      "password": "colocolo",
-      "f_nacimiento": "2025-01-21",
-      "genero": "m"
-    },
-    {
-      "id": "3ade",
-      "nombre": "josiu",
-      "email": "duoc@.cl",
-      "password": "colocolo",
-      "f_nacimiento": "2025-01-29",
-      "genero": "M"
-    },
-    {
-      "id": "bccc",
-      "nombre": "asd",
-      "email": "a@duoc.cl",
-      "password": "jmvg",
-      "f_nacimiento": "2025-01-29",
-      "genero": "M"
-    },
-    {
-      "id": "4e92",
-      "nombre": "a",
-      "email": "a2@duoc.cl",
-      "password": "a",
-      "f_nacimiento": "2025-01-31",
-      "genero": "M"
-    },
-    {
-      "id": "7186",
-      "nombre": "asd",
-      "email": "aa@duoc.cl",
-      "password": "cc",
-      "f_nacimiento": "2025-01-21",
-      "genero": "M"
-    },
-    {
-      "id": "e076",
-      "nombre": "a",
-      "email": "aaa@duoc.cl",
-      "password": "lol",
-      "f_nacimiento": "2025-01-14",
-      "genero": "F"
-    },
-    {
-      "id": "b5af",
-      "nombre": "asd",
-      "email": "a3@duoc.cl",
-      "password": "cc",
-      "f_nacimiento": "2025-01-21",
-      "genero": "M"
-    },
-    {
-      "id": "95af",
-      "nombre": "a",
-      "email": "andy@duoc.cl",
-      "password": "jmvg",
-      "f_nacimiento": "2025-01-24",
       "genero": "M"
     }
   ],
@@ -152,175 +29,83 @@
       "fecha_inicio": "2025-01-15",
       "fecha_corte": "2025-01-22",
       "categoria": "alo",
-      "usuarioEmail": "alo@duoc.cl",
-      "gastos": [
-        {
-          "monto": 470,
-          "fecha": "2025-01-16",
-          "descripcion": "alo",
-          "tipo": "debito"
-        }
-      ]
+      "usuarioEmail": "alo@duoc.cl"
     },
     {
-      "id": "8cbd",
-      "nombre": "asdsad",
+      "id": "2ffa",
+      "nombre": "aaa",
       "fecha_inicio": "2025-01-16",
-      "fecha_corte": "2025-01-22",
-      "categoria": "aloa",
-      "usuarioEmail": "alo1@duoc.cl",
-      "gastos": [
-        {
-          "monto": 12000,
-          "fecha": "2025-01-09",
-          "descripcion": "alooo",
-          "tipo": "debito"
-        }
-      ]
+      "fecha_corte": "2025-02-05",
+      "categoria": "salud",
+      "usuarioId": "8a67"
     },
     {
-      "id": "e774",
-      "nombre": "asd",
-      "fecha_inicio": "2025-01-10",
-      "fecha_corte": "2025-01-31",
-      "categoria": "m",
-      "usuarioEmail": "alo1@duoc.cl",
-      "gastos": [
-        {
-          "monto": 12,
-          "fecha": "2025-01-30",
-          "descripcion": "a",
-          "tipo": "debito"
-        }
-      ]
-    },
-    {
-      "id": "e946",
-      "nombre": "random",
+      "id": "d8f0",
+      "nombre": "alo",
       "fecha_inicio": "2025-01-17",
-      "fecha_corte": "2025-01-22",
-      "categoria": "aaaa",
-      "usuarioEmail": "josemvg@duoc.cl",
-      "gastos": [
-        {
-          "monto": 8000,
-          "fecha": "2025-01-16",
-          "descripcion": "kjskudksu",
-          "tipo": "debito"
-        }
-      ]
-    },
-    {
-      "id": "5fd2",
-      "nombre": "kjsdkjwjdwk",
-      "fecha_inicio": "2025-01-15",
-      "fecha_corte": "2025-01-24",
-      "categoria": "alo",
-      "usuarioEmail": "josemvg@duoc.cl",
-      "gastos": [
-        {
-          "monto": 12000,
-          "fecha": "2025-01-24",
-          "descripcion": "alo",
-          "tipo": "debito"
-        }
-      ]
-    },
-    {
-      "id": "2377",
-      "nombre": "awdawdw",
-      "fecha_inicio": "2025-01-10",
       "fecha_corte": "2025-01-23",
-      "categoria": "aaa",
-      "usuarioEmail": "albocampeon@gmail.com",
-      "gastos": [
-        {
-          "monto": 3000,
-          "fecha": "2025-01-17",
-          "descripcion": "adaasda",
-          "tipo": "debito"
-        }
-      ]
+      "categoria": "duoc",
+      "usuarioId": "163d"
     },
     {
-      "id": "0d3d",
-      "nombre": "a",
-      "fecha_inicio": "2025-01-03",
-      "fecha_corte": "2025-01-09",
-      "categoria": "aa",
-      "usuarioEmail": "albocampeon@gmail.com",
-      "gastos": [
-        {
-          "monto": 12233,
-          "fecha": "2025-01-24",
-          "descripcion": "...",
-          "tipo": "debito"
-        }
-      ]
-    },
-    {
-      "id": "66cf",
-      "nombre": "asd",
-      "fecha_inicio": "2025-01-17",
-      "fecha_corte": "2025-01-17",
-      "categoria": "lol",
-      "usuarioEmail": "",
-      "gastos": [
-        {
-          "monto": 12000,
-          "fecha": "2025-01-17",
-          "descripcion": "asd",
-          "tipo": "debito"
-        }
-      ]
-    },
-    {
-      "id": "7250",
-      "nombre": "as",
+      "id": "c687",
+      "nombre": "alo",
       "fecha_inicio": "2025-01-10",
-      "fecha_corte": "2025-01-02",
-      "categoria": "a",
-      "usuarioEmail": "asd@duoc.cl",
-      "gastos": [
-        {
-          "monto": 1233,
-          "fecha": "2025-01-23",
-          "descripcion": "asd",
-          "tipo": "debito"
-        }
-      ]
-    },
-    {
-      "id": "a7a4",
-      "nombre": "laslda",
-      "fecha_inicio": "2025-01-03",
-      "fecha_corte": "2025-01-09",
-      "categoria": "adwad",
-      "usuarioEmail": "asd@duoc.cl",
-      "gastos": [
-        {
-          "monto": 12000,
-          "fecha": "2025-01-31",
-          "descripcion": "sd",
-          "tipo": "debito"
-        }
-      ]
-    },
-    {
-      "id": "1231",
-      "nombre": "a",
-      "fecha_inicio": "2025-01-08",
-      "fecha_corte": "2025-01-22",
+      "fecha_corte": "2025-01-29",
       "categoria": "aa",
-      "usuarioEmail": "a3@duoc.cl",
-      "gastos": [
-        {
-          "monto": 12000,
-          "fecha": "2025-01-23",
-          "descripcion": "awdad",
-          "tipo": "debito"
-        }
-      ]
+      "usuarioId": "163d"
+    }
+  ],
+  "gastos": [
+    {
+      "monto": "2000",
+      "fecha": "2025-03-22",
+      "descripcion": "algo",
+      "tipo": "salud"
+    },
+    {
+      "id": "5f9d",
+      "descripcion": "a",
+      "monto": 2000,
+      "fecha": "2025-01-31",
+      "categoria": "",
+      "presupuestoId": "2ffa",
+      "imagen": null,
+      "imagenPreview": null,
+      "tipo": "debito"
+    },
+    {
+      "id": "aa2c",
+      "descripcion": "a",
+      "monto": 20000,
+      "fecha": "2025-01-31",
+      "categoria": "",
+      "presupuestoId": "2ffa",
+      "imagen": null,
+      "imagenPreview": null,
+      "tipo": "debito"
+    },
+    {
+      "id": "c508",
+      "descripcion": "a",
+      "monto": 20000,
+      "fecha": "2025-01-31",
+      "categoria": "",
+      "presupuestoId": "2ffa",
+      "imagen": null,
+      "imagenPreview": null,
+      "tipo": "debito"
+    },
+    {
+      "id": "235b",
+      "descripcion": "aa",
+      "monto": 3000,
+      "fecha": "2025-01-15",
+      "categoria": "",
+      "presupuestoId": "d8f0",
+      "imagen": null,
+      "imagenPreview": null,
+      "tipo": "debito"
     }
   ]
 }

@@ -13,63 +13,94 @@
 
   <div class="presupuesto-container">
     <ion-list>
-
+      <!-- Filtros -->
       <div>
-        <input type="text" [(ngModel)]="filtroDescripcion" (input)="filtrarGastos()" placeholder="Filtrar por descripción">
-        <input type="text" [(ngModel)]="filtroCategoria" (input)="filtrarGastos()" placeholder="Filtrar por categoría">
-      </div>
-      
-      <div *ngIf="presupuestos.length==0">
-       <h4>No hay presupuestos asociados.</h4>
+        <input
+          type="text"
+          [(ngModel)]="filtroDescripcion"
+          placeholder="Filtrar por descripción"
+        />
+        <input
+          type="text"
+          [(ngModel)]="filtroCategoria"
+          placeholder="Filtrar por categoría"
+        />
       </div>
 
-     
-      
+      <!-- Mostrar gráfico de Pie -->
+      <div *ngIf="pieChartLabels.length > 0">
+        <canvas id="pieChart" width="400" height="400"></canvas>
+      </div>
+
+      <!-- Mensaje si no hay presupuestos -->
+      <div *ngIf="presupuestos.length === 0">
+        <h4>No hay presupuestos asociados.</h4>
+      </div>
+
+      <!-- Mensaje si no se encuentran gastos filtrados -->
       <div *ngIf="gastosFiltrados.length === 0">
         <p>No se encontraron gastos que coincidan con los filtros.</p>
       </div>
+
+      <!-- Mostrar los gastos filtrados -->
       <div *ngIf="gastosFiltrados.length > 0">
-        <h4>Gastos filtrados:</h4>
-        <button (click)="limpiarFiltro()">Limpiar Filtros</button>
+        <h3>Gastos filtrados:</h3>
+        <button (click)="limpiarFiltros()">Limpiar Filtros</button>
         <ul>
           <li *ngFor="let gasto of gastosFiltrados">
             <p>Monto: {{ gasto.monto }}</p>
             <p>Fecha: {{ gasto.fecha | date: 'shortDate' }}</p>
             <p>Descripción: {{ gasto.descripcion }}</p>
             <p>Tipo: {{ gasto.tipo === 'debito' ? 'Débito' : 'Crédito' }}</p>
+            <!-- Imagen del gasto -->
+            <div *ngIf="gasto.imagen">
+              <h5>Imagen adjunta:</h5>
+              <img [src]="gasto.imagen" alt="Imagen del gasto" class="gasto-imagen" />
+            </div>
           </li>
         </ul>
       </div>
-      
-      <h3>Montos por Categoría</h3>
-      <canvas id="graficoCategorias"></canvas>
 
+      <!-- Mostrar los presupuestos -->
       <ion-item *ngFor="let presupuesto of presupuestos">
-        <ion-label>
-          <h2>{{ presupuesto.nombre }}</h2>
+        <ion-label (click)="alternarGastos(presupuesto)">
+          <p>{{ presupuesto.nombre }}</p>
           <p>Fecha de Inicio: {{ presupuesto.fecha_inicio }}</p>
           <p>Fecha de Corte: {{ presupuesto.fecha_corte }}</p>
           <p>Categoría: {{ presupuesto.categoria }}</p>
-
-          
-          
-          <div *ngIf="presupuesto.gastos?.length > 0">
-
-            <h4>Gastos :</h4>
-            <ul>
-              <li *ngFor="let gastos of presupuesto.gastos">
-                <p>Monto: {{ gastos.monto }}</p>
-                <p>Fecha: {{ gastos.fecha | date:'shortDate' }}</p>
-                <p>Descripción: {{ gastos.descripcion }}</p>
-                <p>Tipo: {{ gastos.tipo === 'debito' ? 'Débito' : 'Crédito' }}</p>
-              </li>
-            </ul>
-          </div>
-          <p *ngIf="presupuesto.gastos?.length === 0">No hay montos registrados aún.</p>
         </ion-label>
+
+        <!-- Mostrar los gastos del presupuesto -->
+        <div *ngIf="presupuesto.mostrarGastos">
+          <p>Gastos:</p>
+          <ion-list>
+            <ion-item *ngFor="let gasto of obtenerGastosPorPresupuesto(presupuesto.id)">
+              <p>Monto: {{ gasto.monto }}</p>
+              <p>Fecha: {{ gasto.fecha | date: 'shortDate' }}</p>
+              <p>Descripción: {{ gasto.descripcion }}</p>
+              <p>Tipo: {{ gasto.tipo === 'debito' ? 'Débito' : 'Crédito' }}</p>
+              <!-- Imagen del gasto -->    
+              <div *ngIf="gasto.imagen">
+                <h5>Imagen adjunta:</h5>
+                <img [src]="gasto.imagen" alt="Imagen del gasto" class="gasto-imagen" />
+              </div>
+            </ion-item>
+          </ion-list>
+        </div>
+
+        <!-- Botón para crear un nuevo gasto -->
+        <ion-button
+          *ngIf="presupuestoSeleccionado"
+          expand="block"
+          color="primary"
+          (click)="verGastos(presupuestoSeleccionado.id)"  
+        >
+          Crear Gasto
+        </ion-button>
       </ion-item>
     </ion-list>
 
-    <button (click)="Home()">Volver a inicio</button>
+    <!-- Botón para volver al inicio -->
+    <ion-button (click)="cancelar()">Volver a inicio</ion-button>
   </div>
 </ion-content>

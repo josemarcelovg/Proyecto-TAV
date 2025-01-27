@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../api/usuario.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';  // Importa el servicio AuthServicew
+import { AuthService } from '../services/auth.service';  
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -42,7 +42,6 @@ presupuesto(){
 
 logout() {
   this.authService.logout(); 
-  this.router.navigate(['/login']); 
 }
 
 verpresupuesto(){

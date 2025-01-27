@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Gasto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div class="form-container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Datos del Gasto</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Monto</ion-label>
+          <ion-input [(ngModel)]="gasto.monto" name="monto" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Fecha</ion-label>
+          <ion-input [(ngModel)]="gasto.fecha" name="fecha" type="date"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Descripción</ion-label>
+          <ion-input [(ngModel)]="gasto.descripcion" name="descripcion"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Tipo</ion-label>
+          <ion-select [(ngModel)]="gasto.tipo" name="tipo" placeholder="Seleccionar">
+            <ion-select-option value="debito">Débito</ion-select-option>
+            <ion-select-option value="credito">Crédito</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- Campo para adjuntar imagen -->
+        
+
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="full" (click)="agregarGasto()">Agregar Gasto</ion-button>
+  </div>
+</ion-content>

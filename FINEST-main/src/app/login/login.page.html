@@ -5,31 +5,31 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-    <div class="login">
-      <ion-card-content>
-        <ion-list>
-          <ion-item>
-            <ion-input
-              labelPlacement="floating"
-              label="Email"
-              type="email"
-              placeholder="usuario@profesor.duoc.cl o usuario"
-              [(ngModel)]="user.email"
-            ></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input
-              labelPlacement="floating"
-              label="Contraseña"
-              type="password"
-              placeholder="Contraseña"
-              [(ngModel)]="user.password"
-            ></ion-input>
-          </ion-item>
-        </ion-list>
-      </ion-card-content>
+  <div class="login">
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-input
+            labelPlacement="floating"
+            label="Email"
+            type="email"
+            placeholder="usuario@profesor.duoc.cl o usuario"
+            [(ngModel)]="credentials.email"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            labelPlacement="floating"
+            label="Contraseña"
+            type="password"
+            placeholder="Contraseña"
+            [(ngModel)]="credentials.password"
+          ></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
 
-      <ion-button expand="block" color="primary"  (click)="login()">Iniciar sesión</ion-button>
-      <ion-button expand="block" color="primary"  (click)="registro()">No tienes cuenta?Registrate</ion-button>
-    </div>
+    <ion-button expand="block" color="primary" (click)="login()">Iniciar sesión</ion-button>
+    <ion-button expand="block" color="primary" (click)="registro()">No tienes cuenta? Registrate</ion-button>
+  </div>
 </ion-content>
